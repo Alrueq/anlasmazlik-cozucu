@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anlaşmazlık Çözücü | Jüri Kararı</title>
+    <meta name="description" content="İki farklı seçenek arasında mı kaldınız? Bırakın Anlaşmazlık Çözücü jürisi sizin için en absürt şekilde karar versin!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- PWA Settings -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#8b5cf6">
+    <link rel="apple-touch-icon" href="https://placehold.co/192x192/8b5cf6/ffffff.png?text=AC">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    
+    <main class="container">
+        <header>
+            <div class="logo">⚖️</div>
+            <h1>Anlaşmazlık Çözücü</h1>
+            <p>Aynı anda iki farklı şeyi mi istediniz? Bırakın jüri karar versin!</p>
+        </header>
+
+        <section class="resolution-form">
+            <div class="inputs-container">
+                <div class="input-group">
+                    <label for="option1">1. Seçenek (Kişi 1)</label>
+                    <input type="text" id="option1" placeholder="Örn: Burger, Matrix, Paris..." autocomplete="off">
+                </div>
+                <div class="vs-badge">VS</div>
+                <div class="input-group">
+                    <label for="option2">2. Seçenek (Kişi 2)</label>
+                    <input type="text" id="option2" placeholder="Örn: Pizza, Inception, Roma..." autocomplete="off">
+                </div>
+            </div>
+            
+            <button id="resolveBtn" class="cool-button">
+                <span>Karar Ver!</span>
+                <div class="shimmer"></div>
+            </button>
+        </section>
+
+        <section id="resultArea" class="result-card hidden">
+            <h2 class="verdict-title">Jüri Kararı 🔨</h2>
+            <div class="the-winner">
+                Satılmış Olan Karar: <strong id="winnerName"></strong>
+            </div>
+            <p class="gerekce-label">Gerekçeli Karar:</p>
+            <p id="justificationText" class="justification"></p>
+            <button id="resetBtn" class="text-button">Yeni Bir Dava Aç</button>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js').then(registration => {
+            console.log('ServiceWorker başarıyla kaydedildi: ', registration);
+          }).catch(error => {
+            console.log('ServiceWorker kaydı başarısız oldu: ', error);
+          });
+        });
+      }
+    </script>
+</body>
+</html>
